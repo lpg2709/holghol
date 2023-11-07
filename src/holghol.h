@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdarg.h>
+#include <string.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,7 +37,7 @@ bool _gholFileExist(const char *filepath);
 /******************************************************************************
  *                                   UTILS                                    *
  ******************************************************************************/
-void _gholRemoveIncludes(const char *string, const char **files, size_t length);
+const char* _gholRemoveIncludes(const char *string, const char **files, size_t length);
 
 /******************************************************************************
  *                                    CORE                                    *
