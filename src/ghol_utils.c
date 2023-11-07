@@ -5,6 +5,7 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
 	int i = 0;
 	size_t slen = strlen(string);
 	char *output = (char*) malloc(sizeof(char) * slen);
+	memset(output, 0, slen);
 	const char *include = "include \"";
 	strncpy(output, string, slen);
 
