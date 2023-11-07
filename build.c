@@ -2,37 +2,28 @@
 
 #include "./src/holghol.h"
 
-void gholPlainFile(const char *files[], size_t lenght) {
-	printf("Plan: \n");
-	int i = 0;
-	for(i = 0; i < lenght; i++) {
-		printf("- %s\n", files[i]);
-	}
-}
-
-void gholLibFile(const char *files[], size_t lenght) {
-	printf("lib: \n");
-	int i = 0;
-	for(i = 0; i < lenght; i++) {
-		printf("- %s\n", files[i]);
-	}
-}
-
 int main(int argc, char **argv) {
 	const char *intro[] = {
-		"HEADER",
+		"src/HEADER",
 	};
-	const char *api[] = {
+	const char *includes_rm[] = {
 		"holghol.h",
 	};
-	const char *footer[] = {
-		"LICENCE",
-		"EXEMPLES",
+	const char *api[] = {
+		"src/holghol.h",
+		"src/ghol_core.c",
+		"src/ghol_files.c",
+		"src/ghol_utils.c",
 	};
+	// const char *footer[] = {
+	// 	"LICENCE",
+	// 	"EXEMPLES",
+	// };
 
+	gholCredits();
 	gholPlainFile(intro, GHOL_ARRAY_SIZE(intro));
-	gholLibFile(api, GHOL_ARRAY_SIZE(api));
-	gholPlainFile(footer, GHOL_ARRAY_SIZE(footer));
+	gholLibFile(api, GHOL_ARRAY_SIZE(api), includes_rm, GHOL_ARRAY_SIZE(includes_rm));
+	//_gholRemoveIncludes("#include \"holghol.h\"\n#include \"teste.h\"\n#include \"mais.h\"\nint main() {\n  return 0; \n}", api_header, GHOL_ARRAY_SIZE(api_header));
 	return 0;
 }
 

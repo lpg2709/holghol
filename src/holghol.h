@@ -43,7 +43,7 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
  *                                    CORE                                    *
  ******************************************************************************/
 void gholPlainFile(const char *files[], size_t length);
-void gholLibFile(const char *files[], size_t length);
+void gholLibFile(const char *files[], size_t length, const char *includes[], size_t len_includes);
 void gholCredits();
 
 #ifdef __cplusplus

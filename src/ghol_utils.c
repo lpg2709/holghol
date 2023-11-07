@@ -8,15 +8,6 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
 	const char *include = "include \"";
 	strncpy(output, string, slen);
 
-	printf("To remove: \n");
-	for(i = 0; i < length; i++) {
-		printf("%s", files[i]);
-	}
-	printf("\n");
-	printf("The text: \n");
-	printf("%s", output);
-	printf("\n");
-
 	if(length > 0) {
 		int j = 0;
 		char c = output[j];
@@ -69,11 +60,7 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
 			c = string[j];
 		}
 	}
-	printf("The replaced: \n");
-	printf("%s", output);
-	printf("\n");
+
 	return output;
 }
 
-		//for(i = 0; i < length; i++) {
-		//}
