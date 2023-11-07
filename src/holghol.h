@@ -17,6 +17,13 @@ extern "C" {
 #define GHOL_ARRAY_SIZE(x) (sizeof(x)/sizeof((x)[0]))
 #define GHOL_PINFO(fmt, ...) fprintf(stdout, "[INFO]: " fmt, __VA_ARGS__);
 #define GHOL_PERROR(fmt, ...) fprintf(stderr, "[ERROR]: " fmt, __VA_ARGS__);
+#define GHOL_VERSION_MAJOR 0
+#define GHOL_VERSION_MINOR 1
+#define GHOL_VERSION_MICRO 0
+
+#define GHOL_STRINGIFY0(s) # s
+#define GHOL_STRINGIFY(s) GHOL_STRINGIFY0(s)
+#define GHOL_VERSION GHOL_STRINGIFY(GHOL_VERSION_MAJOR) "." GHOL_STRINGIFY(GHOL_VERSION_MINOR) "." GHOL_STRINGIFY(GHOL_VERSION_MICRO)
 
 /******************************************************************************
  *                                    FILE                                    *
@@ -29,13 +36,14 @@ bool _gholFileExist(const char *filepath);
 /******************************************************************************
  *                                   UTILS                                    *
  ******************************************************************************/
-void _gholRemoveIncludes(const char **files);
+void _gholRemoveIncludes(const char *string, const char **files, size_t length);
 
 /******************************************************************************
  *                                    CORE                                    *
  ******************************************************************************/
-void gholPlainFile(const char *files[], size_t lenght);
-void gholLibFile(const char *files[], size_t lenght);
+void gholPlainFile(const char *files[], size_t length);
+void gholLibFile(const char *files[], size_t length);
+void gholCredits();
 
 #ifdef __cplusplus
 }
