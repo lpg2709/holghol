@@ -10,9 +10,9 @@ else()
 endif()
 
 file(GLOB PROJECT_HEADERS src/*.h)
-file(GLOB PROJECT_SOURCES "build.c")
+file(GLOB PROJECT_SOURCES src/*.c)
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS})
+add_executable(${PROJECT_NAME} "build.c" ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 
 # add_custom_command(
 #     TARGET ${PROJECT_NAME} POST_BUILD
