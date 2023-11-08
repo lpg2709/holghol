@@ -1,8 +1,8 @@
 #include "holghol.h"
 
-const char* _gholFileOpen(const char *filepath, long *filesize) {
+const char* _gholFileOpen(const char *filepath, size_t *filesize) {
 	FILE *f = fopen(filepath, "r");
-	const char *filecontent;
+	char *filecontent;
 
 	if(f == NULL) {
 		GHOL_PERROR("Fail to open the file '%s'\n", filepath);
@@ -18,21 +18,21 @@ const char* _gholFileOpen(const char *filepath, long *filesize) {
 		exit(EXIT_FAILURE);
 	}
 
-	filecontent = (char *) malloc(sizeof(char) * (*filesize + 1));
+	filecontent = (char *) malloc(sizeof(char) * (*filesize));
 
 	if(filecontent == NULL) {
 		GHOL_PERROR("Fail to allocate memory for '%s' content!\n", filepath);
 		exit(EXIT_FAILURE);
 	}
 
-	fread((void*) filecontent, 1, *filesize, f);
+	fread((void*) filecontent, sizeof(char), *filesize, f);
 
 	fclose(f);
 
 	return filecontent;
 }
 
-bool _gholFileCreate(const char *filepath, const char *content) {
+bool _gholFileCreate(const char *filepath, const char *content, size_t content_size) {
 	FILE *f = fopen(filepath, "w");
 	const char *filecontent;
 
@@ -41,7 +41,7 @@ bool _gholFileCreate(const char *filepath, const char *content) {
 		exit(EXIT_FAILURE);
 	}
 
-	int size = fprintf(f, "%s", content);
+	int size = fwrite(content, sizeof(char), content_size - 1, f);
 	fclose(f);
 
 	if(size < 0) {
@@ -51,7 +51,7 @@ bool _gholFileCreate(const char *filepath, const char *content) {
 	return true;
 }
 
-bool _gholFileAppend(const char *filepath, const char *content) {
+bool _gholFileAppend(const char *filepath, const char *content, size_t content_size) {
 	FILE *f = fopen(filepath, "a");
 	const char *filecontent;
 
@@ -60,7 +60,7 @@ bool _gholFileAppend(const char *filepath, const char *content) {
 		exit(EXIT_FAILURE);
 	}
 
-	int size = fprintf(f, "%s", content);
+	int size = fwrite(content, sizeof(char), content_size - 1, f);
 	fclose(f);
 
 	if(size < 0) {
@@ -79,14 +79,15 @@ bool _gholFileExist(const char *filepath) {
 	return false;
 }
 
-void _gholFileAppendOrCreateStdout(const char *filepath, const char *content) {
+void _gholFileAppendOrCreateStdout(const char *filepath, const char *content, size_t content_size) {
 	if(filepath != NULL) {
 		if(_gholFileExist(filepath)) {
-			_gholFileAppend(filepath, content);
+			_gholFileAppend(filepath, content, content_size);
 		} else {
-			_gholFileCreate(filepath, content);
+			_gholFileCreate(filepath, content, content_size);
 		}
 	} else {
 		fprintf(stdout, "%s", content);
 	}
 }
+

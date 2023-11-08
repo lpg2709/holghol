@@ -1,12 +1,11 @@
 #include "holghol.h"
 
-const char* _gholRemoveIncludes(const char *string, const char **files, size_t length) {
-	int i = 0;
-	size_t slen = strlen(string) + 1;
-	char *output = (char*) malloc(sizeof(char) * slen);
-	memset(output, 0, slen);
+const char* _gholRemoveIncludes(const char *string, size_t ssize, const char **files, size_t length) {
+    int i = 0;
+    char *output = (char*) malloc(sizeof(char) * ssize);
+    memset(output, 0, ssize);
 	const char *include = "include \"";
-	strncpy(output, string, slen);
+	strncpy(output, string, ssize);
 
 	if(length > 0) {
 		int j = 0;

@@ -29,16 +29,16 @@ extern "C" {
 /******************************************************************************
  *                                    FILE                                    *
  ******************************************************************************/
-const char* _gholFileOpen(const char *filepath, long *filesize);
-bool _gholFileCreate(const char *filepath, const char *content);
-bool _gholFileAppend(const char *filepath, const char *content);
+const char* _gholFileOpen(const char *filepath, size_t *filesize);
+bool _gholFileCreate(const char *filepath, const char *content, size_t content_size);
+bool _gholFileAppend(const char *filepath, const char *content, size_t content_size);
 bool _gholFileExist(const char *filepath);
-void _gholFileAppendOrCreateStdout(const char *filepath, const char *content);
+void _gholFileAppendOrCreateStdout(const char *filepath, const char *content, size_t content_size);
 
 /******************************************************************************
  *                                   UTILS                                    *
  ******************************************************************************/
-const char* _gholRemoveIncludes(const char *string, const char **files, size_t length);
+const char* _gholRemoveIncludes(const char *string, size_t ssize, const char **files, size_t length);
 
 /******************************************************************************
  *                                    CORE                                    *
@@ -54,3 +54,4 @@ void gholEndif(const char* prefix, const char *outfile);
 #endif
 
 #endif // HOLGHOL_H
+
