@@ -33,6 +33,7 @@ const char* _gholFileOpen(const char *filepath, long *filesize);
 bool _gholFileCreate(const char *filepath, const char *content);
 bool _gholFileAppend(const char *filepath, const char *content);
 bool _gholFileExist(const char *filepath);
+void _gholFileAppendOrCreateStdout(const char *filepath, const char *content);
 
 /******************************************************************************
  *                                   UTILS                                    *
@@ -45,6 +46,8 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
 void gholPlainFile(const char *files[], size_t length, const char* outfile);
 void gholLibFile(const char *files[], size_t length, const char *includes[], size_t len_includes, const char* outfile);
 void gholCredits(const char* outfile);
+void gholIfdefine(const char* prefix, const char *outfile);
+void gholEndif(const char* prefix, const char *outfile);
 
 #ifdef __cplusplus
 }

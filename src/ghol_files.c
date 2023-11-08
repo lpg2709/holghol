@@ -78,3 +78,15 @@ bool _gholFileExist(const char *filepath) {
 	}
 	return false;
 }
+
+void _gholFileAppendOrCreateStdout(const char *filepath, const char *content) {
+	if(filepath != NULL) {
+		if(_gholFileExist(filepath)) {
+			_gholFileAppend(filepath, content);
+		} else {
+			_gholFileCreate(filepath, content);
+		}
+	} else {
+		fprintf(stdout, "%s", content);
+	}
+}
