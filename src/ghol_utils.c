@@ -1,9 +1,8 @@
 #include "holghol.h"
-#include <string.h>
 
 const char* _gholRemoveIncludes(const char *string, const char **files, size_t length) {
 	int i = 0;
-	size_t slen = strlen(string);
+	size_t slen = strlen(string) + 1;
 	char *output = (char*) malloc(sizeof(char) * slen);
 	memset(output, 0, slen);
 	const char *include = "include \"";
@@ -18,8 +17,7 @@ const char* _gholRemoveIncludes(const char *string, const char **files, size_t l
 			switch(c) {
 				case '#':
 					{
-						start = j;
-						end = -1;
+                        start = j;
 						int k = 0;
 						char kc = include[k];
 						c = output[++j];
