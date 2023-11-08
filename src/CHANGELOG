@@ -1,0 +1,11 @@
+/// ## Changelog
+///
+/// [date] ([x.y.z]) - [description]
+/// - [date]: date on which the change has been pushed
+/// - [x.y.z]: Version string, represented in Semantic Versioning format
+///   - [x]: Major version with API and library breaking changes
+///   - [y]: Minor version with non-breaking API and library changes
+///   - [z]: Patch version with no direct changes to the API
+///
+/// - 2023/11/08 (0.1.0) - ADD first implementation of the API
+///
