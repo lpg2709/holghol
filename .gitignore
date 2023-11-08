@@ -1,4 +1,10 @@
 [Bb]uild/
 compile_commands.json
 .cache/
+*.user
+
+# Ignore vim files:
+*~
+*.swp
+*.swo
 
