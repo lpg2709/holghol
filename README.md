@@ -73,7 +73,7 @@ cmake --build build
 ```
 
 Inside the `build` directory there will be a `holghol` executable. Running the
-program will generate `holghol.h`.
+program will generate `holghol.h` on the root folder.
 
 ## Test
 
