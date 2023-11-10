@@ -20,32 +20,32 @@ Create the main function and describe your project:
 #include "holghol.h"
 
 int main(int argc, char **argv) {
-	const char *output = "my_lib.h";
+    const char *output = "my_lib.h";
 
-	const char *intro[] = {
+    const char *intro[] = {
         "src/HEADER",
-	};
-	const char *includes_rm[] = {
-		"my_lib.h",
-		"my_lib_common.h",
-	};
-	const char *api[] = {
-		"src/my_lib.h",
-		"src/my_lib_common.h",
+    };
+    const char *includes_rm[] = {
+        "my_lib.h",
+        "my_lib_common.h",
+    };
+    const char *api[] = {
+        "src/my_lib.h",
+        "src/my_lib_common.h",
         "src/core.c",
         "src/files.c",
-	};
-	const char *footer[] = {
-		"src/LICENSE",
-		"src/LINKS",
-	};
+    };
+    const char *footer[] = {
+        "src/LICENSE",
+        "src/LINKS",
+    };
 
-	gholCredits(output);
-	gholPlainFile(intro, GHOL_ARRAY_SIZE(intro), output);
-	gholIfdefine("MY_LIB", output);
-	gholLibFile(api, GHOL_ARRAY_SIZE(api), includes_rm, GHOL_ARRAY_SIZE(includes_rm), output);
-	gholEndif("MY_LIB", output);
-	gholPlainFile(footer, GHOL_ARRAY_SIZE(footer), output);
+    gholCredits(output);
+    gholPlainFile(intro, GHOL_ARRAY_SIZE(intro), output);
+    gholIfdefine("MY_LIB", output);
+    gholLibFile(api, GHOL_ARRAY_SIZE(api), includes_rm, GHOL_ARRAY_SIZE(includes_rm), output);
+    gholEndif("MY_LIB", output);
+    gholPlainFile(footer, GHOL_ARRAY_SIZE(footer), output);
 
     return 0;
 }
